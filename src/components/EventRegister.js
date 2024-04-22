@@ -1,12 +1,18 @@
 // CustomerForm.js
 import React, { useState, useEffect } from "react";
-import DatePicker from "react-datepicker";
-
-import "react-datepicker/dist/react-datepicker.css";
-import Footer from "./Footer";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-function EventRegister(props) {
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+
+function EventRegister() {
+  const { state } = useLocation();
+  const eventID = state.id;
+  const eventName = state.name;
+
   const [customer_name, setCustomerName] = useState("");
   const [customer_phone, setPhone] = useState("");
   const [customer_email, setEmail] = useState("");
@@ -75,19 +81,18 @@ function EventRegister(props) {
         customer_phone,
         ticketQty,
         totalPrice,
+        eventID,
       };
 
       try {
-        const response = await axios.post(
+        await axios.post(
           "https://662056403bf790e070af94e0.mockapi.io/eventregister",
           formData
         );
         setFormShow(false);
-        console.log("Form submitted successfully", response.data);
       } catch (error) {
         console.error("Error submitting form:", error);
       }
-      console.log("Checkbox is checked. Proceeding to the next page...");
     }
   };
 
@@ -97,6 +102,7 @@ function EventRegister(props) {
 
   return (
     <div>
+      <Navbar></Navbar>
       <div id="registerFormContainer">
         {formShow && (
           <form
@@ -106,7 +112,7 @@ function EventRegister(props) {
           >
             <h1 className="customerRegisterFromHeader">
               {" "}
-              Register for Events{" "}
+              Register for <br /> {eventName}{" "}
             </h1>
             <fieldset>
               <legend>

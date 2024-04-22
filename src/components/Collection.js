@@ -12,8 +12,9 @@ function Collection() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        //const response = await axios.get("http://localhost:8081/api/artwork");
         const response = await axios.get(
-          "https://661ea68d16358961cd927f00.mockapi.io/images"
+          "https://662056403bf790e070af94e0.mockapi.io/collections"
         );
         setData(response.data);
       } catch (error) {
@@ -25,43 +26,43 @@ function Collection() {
   }, []);
 
   const collections = data.map(
-    ({
-      artwork_image,
-      artwork_width,
-      artwork_height,
-      artwork_desc,
-      artwork_name,
-    }) => ({
-      src: artwork_image,
-      width: artwork_width,
-      height: artwork_height,
-      caption: artwork_desc,
-      alt: artwork_name,
+    ({ artworkId, artworkName, artDesc, artImage, width, height }) => ({
+      id: artworkId,
+      width: width,
+      height: height,
+      caption: artDesc,
+      alt: artworkName,
+      //src: `http://localhost:8081/api/artwork/${artworkId}/image",
+      src: artImage,
     })
   );
 
   const slides = data.map(
     ({
-      artwork_id,
-      artwork_width,
-      artwork_height,
-      artwork_image,
-      artwork_desc,
-      artwork_name,
-      year_of_creation,
-      artwork_type,
+      artworkId,
+      artworkName,
+      artist,
+      artType,
+      creationYear,
+      artDesc,
+      artImage,
+      width,
+      height,
     }) => ({
-      id: artwork_id,
-      width: artwork_width,
-      height: artwork_height,
-      title: artwork_name,
+      id: artworkId,
+      title: artworkName,
+      width: width,
+      height: height,
       description:
-        artwork_desc +
+        artDesc +
         " \nCreated: " +
-        year_of_creation +
+        artist +
+        ", " +
+        creationYear +
         " | Medium: " +
-        artwork_type,
-      src: artwork_image,
+        artType,
+      //src: `http://localhost:8081/api/artwork/${artworkId}/image",
+      src: artImage,
     })
   );
 

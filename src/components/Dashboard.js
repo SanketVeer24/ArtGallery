@@ -1,42 +1,41 @@
-// // Dashboard.js - Component for the main dashboard
-// import React from 'react';
-// import Sidebar from './Sidebar';
-// import Content from './Content';
+import React from "react";
+import { Link } from "react-router-dom";
+import Logo from "../images/logo.png";
 
-// const Dashboard = () => {
-//   return (
-//     <div>
-//       <Sidebar />
-//       <Content />
-//     </div>
-//   );
-// };
-
-// export default Dashboard;
-
-// Dashboard.js
-import React, { useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
-import ViewCustomers from "./ViewCustomers";
-
-const Dashboard = () => {
-  const [customers, setCustomers] = useState([]);
-
-  useEffect(() => {
-    // Fetch customers from the API
-    setCustomers([
-      // ... fetched customers
-    ]);
-  }, []);
-
+function Dashboard() {
   return (
-    <Routes>
-      <Route
-        path="/view-customers"
-        element={<ViewCustomers customers={customers} />}
-      />
-    </Routes>
+    <div id="adminDashboard">
+      <div id="navbar" className="sidenav">
+        <div className="sidenavContainer">
+          <div className="sidenavContent">
+            <img src={Logo} alt="Logo"></img>
+            <h1>artfuly</h1>
+          </div>
+        </div>
+        <div>
+          <Link to="/login">
+            <button className="logout-button">Logout ➡️</button>
+          </Link>
+        </div>
+      </div>
+      <div id="mainContent">
+        <h1>Admin Dashboard</h1>
+        <nav>
+          <ul className="adminCardsList">
+            <li className="adminCard">
+              <Link to="/viewupdateevents">View/Update Events</Link>
+            </li>
+            <li className="adminCard">
+              <Link to="/viewupdatecollection">View/Update Collection</Link>
+            </li>
+            <li className="adminCard">
+              <Link to="/viewcustomers">View Customer Data</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
   );
-};
+}
 
 export default Dashboard;

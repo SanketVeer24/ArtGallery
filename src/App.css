@@ -202,7 +202,6 @@
 #sectionNavContainer {
   background-color: #000000;
   margin: 0;
-  text-align: center;
   margin-bottom: 50px;
 }
 
@@ -254,7 +253,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  font: "Lora", sans-serif;
+  font-family: "Lora", sans-serif;
   border-radius: 10px;
   margin: 10px 0;
   background-color: #007bff; /* Example background color */
@@ -449,6 +448,282 @@
   color: #fdf6e0;
 }
 /*EventRegister - END*/
+/**********************/
+/*Admin Login - START*/
+#adminLoginContainer {
+  height: 100vh;
+  background-image: url("./images/background.jpg");
+  padding: 50px;
+}
+
+#adminLoginContainer #adminLoginForm {
+  max-width: 300px;
+  margin: 10px auto;
+  padding: 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  color: #ffffff;
+  font-family: "Montserrat", serif;
+}
+
+#adminLoginContainer #adminLoginForm .loginFromHeader {
+  margin: 0 0 30px 0;
+  text-align: center;
+  color: #fdf6e0;
+  font-family: "Lora", sans-serif;
+}
+
+#adminLoginContainer #adminLoginForm fieldset {
+  margin-bottom: 15px;
+  border: none;
+}
+
+#adminLoginContainer #adminLoginForm label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+#adminLoginContainer #adminLoginForm input {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  font-size: 16px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 15px;
+  width: 90%;
+  background-color: #e8eeef;
+  color: #8a97a0;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+  margin-bottom: 30px;
+}
+
+#adminLoginContainer #adminLoginForm .loginBtn {
+  padding: 19px 39px 18px 39px;
+  color: #fff;
+  background-color: #fe7869;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  width: 100%;
+  border: 1px solid #fe7869;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.1) inset;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+/*Admin Login - END*/
+/**********************/
+/*Admin Dashboard - START*/
+#adminDashboard #navbar {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+#adminDashboard #navbar .sidenavContainer {
+  flex: 1; /* Grow to fill remaining space */
+  padding-top: 20px;
+}
+
+#adminDashboard #navbar .sidenavContainer .sidenavContent {
+  display: flex;
+}
+
+#adminDashboard #navbar .sidenavContainer .sidenavContent h1 {
+  font-family: "Lora", serif;
+  font-size: 1.8rem;
+  color: #fdf6e0;
+}
+
+#adminDashboard #navbar .sidenavContainer .sidenavContent img {
+  width: 60px;
+  margin: 10px 5px;
+}
+
+#adminDashboard #navbar .logout-button {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 1.2em;
+  color: #818181;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#adminDashboard #navbar .logout-button:hover {
+  color: #f1f1f1;
+}
+
+#adminDashboard #mainContent {
+  margin-left: 190px;
+  padding: 25px;
+  background-color: #ffffff;
+  height: 100vh;
+}
+
+#adminDashboard #mainContent .adminCardsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#adminDashboard #mainContent h1 {
+  font-family: "Lora", serif;
+  font-size: 1.8rem;
+  padding-left: 15px;
+}
+
+#adminDashboard #mainContent .adminCard {
+  flex: 1 0 300px; /* Adjust the width of the card */
+  margin: 10px;
+  padding: 50px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fea546;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+#adminDashboard #mainContent .adminCard a,
+#adminDashboard #mainContent .adminCard a:link,
+#adminDashboard #mainContent .adminCard a:visited {
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+  color: #fdf6e0;
+}
+
+/*Admin Dashboard - END*/
+/**********************/
+/*ViewUpdateEvents, ViewUpdateCollection, ViewCustomers - START*/
+#viewUpdateContainer {
+  background-color: #ffffff;
+  height: 100%;
+  padding: 30px;
+}
+
+#viewUpdateContainer .viewUpdateHeader {
+  display: flex;
+}
+
+#viewUpdateContainer .viewUpdateHeader img {
+  width: 40px;
+  height: 40px;
+}
+
+#viewUpdateContainer h2 {
+  font-family: "Lora", serif;
+  color: #d25f52;
+  margin: 0 10px;
+}
+
+#viewUpdateContainer .updateSections {
+  margin-bottom: 40px;
+}
+
+#viewUpdateContainer .updateSections .pieStatsContainer {
+  width: "40%";
+  height: "300px";
+  margin-bottom: "20px";
+}
+
+#editTable {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px auto;
+}
+
+#editTable th,
+td {
+  border: 1px solid #fea546;
+  padding: 8px;
+  font-size: 13px;
+}
+
+#editTable th {
+  font-family: "Montserrat", sans-serif;
+  background-color: #fea546;
+  font-weight: 400;
+}
+
+#editTable tr:hover {
+  background-color: #f2f2f2;
+}
+
+#editTable button {
+  cursor: pointer;
+}
+
+#editTable .updateCell {
+  background-color: #fe7869;
+  text-align: center;
+}
+
+#editTable .updateBtn {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+}
+
+.editContainer {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.editContainer .form-group {
+  margin-bottom: 20px;
+}
+
+.editContainer label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.editContainer input[type="text"],
+.editContainer input[type="date"],
+.editContainer input[type="time"],
+.editContainer textarea {
+  width: -moz-available;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.editContainer button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.editContainer button:hover {
+  background-color: #0056b3;
+}
+
+.viewCustomerContainer {
+  height: 100vh !important;
+}
+/*ViewUpdateEvents - END*/
 /**********************/
 /*Footer - START*/
 #footer {
