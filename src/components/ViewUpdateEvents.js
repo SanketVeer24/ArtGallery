@@ -61,13 +61,41 @@ function ViewUpdateEvents() {
     }
   };
 
+  // const handleUpdateEvent = async () => {
+  //   const updatedEvents = events.map((event) =>
+  //     event.eventId === editEvent.eventId ? { ...event, ...editEvent } : event
+  //   );
+  //   setEvents(updatedEvents);
+  //   setEditEvent(null);
+  //   //Post API
+  // };
+
   const handleUpdateEvent = async () => {
-    const updatedEvents = events.map((event) =>
-      event.eventId === editEvent.eventId ? { ...event, ...editEvent } : event
-    );
-    setEvents(updatedEvents);
-    setEditEvent(null);
-    //Post API
+    try {
+      const updatedEvent = {
+        ...editEvent,
+        start: new Date(editEvent.doe + 'T' + editEvent.startTime), 
+        end: new Date(editEvent.doe + 'T' + editEvent.endTime),
+      };
+  
+      const response = await axios.put(
+        `https://661ea68d16358961cd927f00.mockapi.io/events/${editEvent.eventId}`,
+        updatedEvent
+      );
+  
+      if (response.status === 200) {
+        const updatedEvents = events.map((event) =>
+          event.eventId === editEvent.eventId ? { ...event, ...editEvent, ...updatedEvent } : event
+        );
+        setEvents(updatedEvents);
+        console.log('Event updated successfully:', response.data);
+      } else {
+        console.error('Failed to update event:', response.status);
+      }
+    } catch (error) {
+      console.error('Error updating event:', error);
+    }
+    setEditEvent(null); 
   };
 
   const handleAddEvent = async () => {

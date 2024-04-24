@@ -50,13 +50,43 @@ function ViewUpdateCollection() {
     }
   };
 
-  const handleUpdateArtwork = () => {
-    const updatedArtworks = collection.map((artwork) =>
-      artwork.artworkId === editArtwork.artworkId ? editArtwork : artwork
-    );
-    setCollection(updatedArtworks);
+  // const handleUpdateArtwork = () => {
+  //   const updatedArtworks = collection.map((artwork) =>
+  //     artwork.artworkId === editArtwork.artworkId ? editArtwork : artwork
+  //   );
+  //   setCollection(updatedArtworks);
+  //   setEditArtwork(null);
+  // };
+
+  const handleUpdateArtwork = async () => {
+    try {
+      const response = await axios.put(
+        `https://662056403bf790e070af94e0.mockapi.io/collections/${editArtwork.artworkId}`,
+        {
+          artworkName: editArtwork.artworkName,
+          artist: editArtwork.artist,
+          artType: editArtwork.artType,
+          creationYear: editArtwork.creationYear,
+          purchaseStatus: editArtwork.purchaseStatus,
+          artDesc: editArtwork.artDesc,
+        }
+      );
+  
+      if (response.status === 200) {
+        const updatedArtworks = collection.map((artwork) =>
+          artwork.artworkId === editArtwork.artworkId ? { ...artwork, ...response.data } : artwork
+        );
+        setCollection(updatedArtworks);
+        console.log('Artwork updated successfully:', response.data);
+      } else {
+        console.error('Failed to update artwork:', response.status);
+      }
+    } catch (error) {
+      console.error('Error updating artwork:', error);
+    }
     setEditArtwork(null);
   };
+  
 
   const handleAddCollection = async () => {
     if (
